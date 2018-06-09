@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <button class="btn btn-sm btn-primary pull-right" data-clipboard-target="#bar0">Copy</button><br />
+      <div class="panel-body">
+         <h5 class="word-wrap"><b><%= link_to @result[0][:link],@result[0][:link], target: :_blank %></b><hr></h5>
+      </div>
+
+      <div class="panel-body" id="bar0">
+         <%= raw Crawler.get_webcontent(@result[0][:link]) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <button class="btn btn-sm btn-primary pull-right" data-clipboard-target="#bar1">Copy</button><br />
+      <div class="panel-body">
+         <h5 class="word-wrap"><b><%= link_to @result[1][:link],@result[1][:link], target: :_blank %></b><hr></h5>
+      </div>
+
+      <div class="panel-body" id="bar1">
+         <%= raw Crawler.get_webcontent(@result[1][:link]) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <button class="btn btn-sm btn-primary pull-right" data-clipboard-target="#bar2">Copy</button><br />
+      <div class="panel-body">
+         <h5 class="word-wrap"><b><%= link_to @result[2][:link],@result[2][:link], target: :_blank %></b><hr></h5>
+      </div>
+
+      <div class="panel-body" id="bar2">
+         <%= raw Crawler.get_webcontent(@result[2][:link]) %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <button class="btn btn-sm btn-primary pull-right" data-clipboard-target="#bar3">Copy</button><br />
+      <div class="panel-body">
+         <h5 class="word-wrap"><b><%= link_to @result[3][:link],@result[3][:link], target: :_blank %></b><hr></h5>
+      </div>
+
+      <div class="panel-body" id="bar3">
+         <%= raw Crawler.get_webcontent(@result[3][:link]) %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% content_for(:third_party_js) do %>
+<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
+<% end %>
+<script>
+  var clipboard = new Clipboard('.btn');
+</script>

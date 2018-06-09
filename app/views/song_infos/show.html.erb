@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Search by:</strong>
+  <%= @song_info.search_by %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @song_info.website %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @song_info.status %>
+</p>
+
+<p>
+  <strong>Web template:</strong>
+  <%= @song_info.web_template %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @song_info.user %>
+</p>
+
+<%= link_to 'Edit', edit_song_info_path(@song_info) %> |
+<%= link_to 'Back', song_infos_path %>

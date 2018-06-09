@@ -1,0 +1,50 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>Search Info</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Search by</th>
+      <th>Website</th>
+      <th>Status</th>
+      <th>Web template</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @song_infos.each do |song_info| %>
+      <% if current_user.id === song_info.user.id %>
+        <tr>
+          <td><%= song_info.search_by %></td>
+          <td><%= song_info.website %></td>
+          <td><%= song_info.status %></td>
+          <td><%= song_info.web_template %></td>
+          <td><%= song_info.user.username %></td>
+          <td><% link_to 'Show', song_info %></td>
+          <td><% link_to 'Edit', edit_song_info_path(song_info) %></td>
+          <td><%= link_to 'Delete', song_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% elsif current_user.username.to_s.include? "admin01" %>
+        <tr>
+          <td><%= song_info.search_by %></td>
+          <td><%= song_info.website %></td>
+          <td><%= song_info.status %></td>
+          <td><%= song_info.web_template %></td>
+          <td><%= song_info.user.username %></td>
+          <td><% link_to 'Show', song_info %></td>
+          <td><% link_to 'Edit', edit_song_info_path(song_info) %></td>
+          <td><%= link_to 'Delete', song_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% link_to 'New Song Info', new_song_info_path %>
+</div>

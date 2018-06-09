@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QLER v2.0</title>
+    <%= csrf_meta_tags %>
+    <%= yield :third_party_js %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <%= render 'layouts/navigation' %>
+        <div class="container">
+          <div id="flash">
+            <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+              <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
+          </div>
+        </div>
+
+        <%= yield %>
+
+
+  </body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function(){
+    setTimeout(function(){
+    $('#flash').fadeOut();
+    }, 2000);
+  })
+</script>

@@ -1,0 +1,46 @@
+<div id="saved">
+  <%= render partial: "search/saved" %>
+</div>
+
+<center>
+  <h1>Find Lyrics By:</h1>
+</center>
+<div class="container-fluid" id="search">
+  <%= form_tag lyrics_search_path, remote: true, method: :get, id: "search-form" do %>
+  <div class="row">
+    <div class="col-sm-3">
+        <div class="panel-heading">
+          <%= text_field_tag :songtitle, params[:songtitle], placeholder: "Song Title", autofocus: true,
+          class: "form-control search-box input-lg" %>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="panel-heading">
+          <%= text_field_tag :singername, params[:singername], placeholder: "Singer Name", autofocus: true,
+          class: "form-control search-box input-lg" %>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="panel-heading">
+          <%= text_field_tag :lyrics, params[:lyrics], placeholder: "Lyrics", autofocus: true,
+          class: "form-control search-box input-lg" %>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="panel-heading">
+          <%= button_tag(type: :submit, class: "form-control btn-lg btn-primary") do %>
+            <i class="glyphicon glyphicon-search"></i> Search
+          <% end %>
+        </div>
+    </div>
+  </div>
+  </div>
+  <% end %>
+</div>
+
+<div id="results">
+  <%= render partial: "search/test" %>
+</div>

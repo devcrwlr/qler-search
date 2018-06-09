@@ -1,0 +1,6 @@
+$('#saved').html("<%= j (render 'search/saved.html') %>")
+$(function(){
+    setTimeout(function(){
+      $('#flashMsg').trigger('click');
+    }, 3000);
+});

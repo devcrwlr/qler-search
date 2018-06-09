@@ -1,0 +1,29 @@
+<% if params[:action] == 'saved' %>
+  <div class="container-fluid">
+    <% if @saved == nil  %>
+      <div class="alert alert-danger alert-dismissible fade in" role="alert"><i class="glyphicon glyphicon-remove-sign"></i>Invalid saving!!! <a href="#" class="close" data-dismiss="alert" aria-label="close" id="flashMsg">&times;</a></div>
+    <% else%>
+      <p>
+        <% dataArr = [] %>        
+        <% dataArr = @saved.split(",") %>
+        <% search_by = dataArr[0] %>
+        <% website = dataArr[1] %>
+        <% status = dataArr[2] %>
+        <% template = Crawler.is_available(website) %>
+        <% if template.to_s.include? "true" %>
+          <% template = "Available" %>
+        <% elsif template.to_s.include? "false" %>
+          <% template = "No Lyrcis" %>
+        <% end %>
+        <% user = current_user.id %>
+        <% if SongInfo.exists?(website: "#{website}") %>
+          <div class="alert alert-danger alert-dismissible fade in" role="alert"><i class="glyphicon glyphicon-remove-sign"></i>Website Already saved!!! <a href="#" class="close" data-dismiss="alert" aria-label="close" id="flashMsg">&times;</a></div>
+        <% else %>
+          <div class="alert alert-success alert-dismissible fade in" role="alert"><i class="glyphicon glyphicon-ok-sign"></i>Saved Successfully!!! <a href="#" class="close" data-dismiss="alert" aria-label="close" id="flashMsg">&times;</a></div>
+          <% songs = SongInfo.new(:status => status, :search_by => search_by, :website => website, :web_template => template, :user_id => user) %>
+          <% songs.save %>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+<% end %>

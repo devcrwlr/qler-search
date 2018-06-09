@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  search_by: MyString
+  website: MyString
+  status: MyString
+  web_template: MyString
+  user: one
+
+two:
+  search_by: MyString
+  website: MyString
+  status: MyString
+  web_template: MyString
+  user: two
